@@ -1,0 +1,52 @@
+body {
+	font-family: "Cairo Play", "Noto Kufi Arabic", sans-serif;
+	font-weight: 600;
+	text-align: center;
+	background: #252525;
+	color: #fff;
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.title {
+	font-size: 2rem;
+	margin-top: 2.5rem;
+	margin-bottom: 2.5rem;
+}
+
+.player_wrap {
+	width: fit-content;
+	height: 6rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.player {
+	display: none;
+}
+
+.ready_button_wrap {
+	width: fit-content;
+	height: 6rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.ready_button {
+	font-family: "Noto Kufi Arabic", sans-serif;
+	font-weight: 500;
+	display: none;
+	padding: 1rem;
+	background: #4b4b4b;
+	font-size: 1rem;
+	border-radius: 24px;
+	cursor: pointer;
+	border: #4b4b4b;
+	color: #fff;
+}

@@ -3,50 +3,51 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Listen Together</title>
+		<title>نسمع سوا</title>
 		<script src="/socket.io/socket.io.js"></script>
-		<style>
-			body {
-				font-family: Arial, sans-serif;
-				text-align: center;
-				margin: 50px;
-			}
-			button {
-				padding: 10px 20px;
-				font-size: 18px;
-			}
-		</style>
+		<link rel="stylesheet" href="./index.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cairo+Play:wght@200..1000&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
 	<body>
-		<h1>Listen Together</h1>
-		<audio id="audioPlayer" controls preload="auto" style="display: none">
-			<source
-				src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-				type="audio/mpeg"
-			/>
-			Your browser does not support the audio element.
-		</audio>
-		<br /><br />
-		<button id="startButton" style="display: none">Ready Up</button>
+		<div class="main">
+			<div class="title">نسمع سوا</div>
+			<div class="player_wrap">
+				<audio class="player" id="player" controls preload="auto">
+					<source src="./AD_Wahi_Zekrayat.mp3" type="audio/mpeg" />
+				</audio>
+			</div>
+			<div class="ready_button_wrap">
+				<button id="ready_button" class="ready_button">جاهزة؟</button>
+			</div>
+		</div>
 
 		<script>
-			const audio = document.getElementById("audioPlayer");
-			const startButton = document.getElementById("startButton");
+			const audio = document.getElementById("player");
+			const ready_button = document.getElementById("ready_button");
 			const socket = io();
 			let isPlaying = false;
 			let isSeeking = false;
 
 			socket.on("usersConnected", () => {
-				startButton.style.display = "block";
+				ready_button.style.display = "block";
 			});
 			socket.on("usersDisconnected", () => {
-				startButton.style.display = "none";
+				ready_button.style.display = "none";
 				audio.style.display = "none";
 			});
 
 			// ios interaction (does it need to be with audio player or anything?)
-			startButton.addEventListener("click", () => {
-				startButton.style.color = "#666";
+			ready_button.addEventListener("click", () => {
+				ready_button.style.color = "#666";
 				socket.emit("userReady");
 			});
 
